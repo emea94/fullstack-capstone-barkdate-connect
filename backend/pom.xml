@@ -53,7 +53,7 @@
     </dependencies>
 
     <build>
-        <finalName>barkdateConnect</finalName>
+        <finalName>barkdateconnect</finalName>
         <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>
