@@ -1,7 +1,10 @@
 package com.example.backend.model;
 
+import org.springframework.data.annotation.Id;
+
 public record Dog(
-     String id,
+     @Id
+     String dogId,
      String name,
      String age,
      double size,
