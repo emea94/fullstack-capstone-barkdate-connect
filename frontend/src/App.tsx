@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, Route, Routes} from "react-router-dom";
 import LocationGallery from "./components/LocationGallery.tsx";
+import {Location} from './types/Location.ts'
+
 
 export default function App() {
   const [location, setLocation] = useState<Location[]>([])
