@@ -15,8 +15,8 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
     return (
         <div className={"LocationCard"} onClick={navigateToDetail}>
             <h3 className={"LocationCity"}>{props.location.city}</h3>
-            <h3 className={"LocationVenue"}>{props.location.venue}</h3>
-            <h3 className={"LocationPin"}>{props.location.googlePlusCode}</h3>
+            <h4 className={"LocationVenue"}>{props.location.venue}</h4>
+            <h4 className={"LocationPin"}>{props.location.googlePlusCode}</h4>
         </div>
     );
 }
