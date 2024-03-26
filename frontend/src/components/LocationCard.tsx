@@ -21,7 +21,6 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
             onClick={navigateToDetail}
             onKeyDown={navigateToDetail}
             tabIndex={0}
-            role="button"
             aria-label={`Navigate to ${props.location.city}`}
         >
             <div className={"LocationCity"}>{props.location.city}</div>
