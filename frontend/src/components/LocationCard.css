@@ -1,5 +1,5 @@
 .LocationCard {
-    font-family: "Selawik";
+    font-family: "Selawik", sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
