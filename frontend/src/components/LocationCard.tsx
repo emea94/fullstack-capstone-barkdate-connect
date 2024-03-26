@@ -1,5 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {Location} from '../types/Location.ts'
+import "./LocationCard.css"
 
 type LocationCardProps = {
     location: Location,
@@ -14,9 +15,9 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
 
     return (
         <div className={"LocationCard"} onClick={navigateToDetail}>
-            <h3 className={"LocationCity"}>{props.location.city}</h3>
-            <h4 className={"LocationVenue"}>{props.location.venue}</h4>
-            <h4 className={"LocationPin"}>{props.location.googlePlusCode}</h4>
+            <div className={"LocationCity"}>{props.location.city}</div>
+            <div className={"LocationVenue"}>{props.location.venue}</div>
+            <div className={"LocationPin"}>{props.location.googlePlusCode}</div>
         </div>
     );
 }

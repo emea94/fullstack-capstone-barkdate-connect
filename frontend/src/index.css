@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Selawik";
+    src: url("../public/selawksb.ttf") format("truetype");
+}
+
 body, :root {
   margin: 5px;
   padding: 5px;
@@ -6,5 +11,5 @@ body, :root {
 .HeaderLogo {
     cursor: pointer;
     height: 40px;
-    padding: 0px 0 10px 0px;
+    padding: 0 0 10px 0;
 }
