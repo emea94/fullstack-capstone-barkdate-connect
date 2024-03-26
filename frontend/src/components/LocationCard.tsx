@@ -9,12 +9,21 @@ type LocationCardProps = {
 export default function LocationCard(props: Readonly<LocationCardProps>) {
     const navigate = useNavigate()
 
-    function navigateToDetail(){
-        navigate("/locations/" + props.location.id)
+    function navigateToDetail(event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>) {
+        if (event.type === 'click' || (event.type === 'keydown' && (event as React.KeyboardEvent<HTMLDivElement>).key === 'Enter')) {
+            navigate("/locations/" + props.location.id);
+        }
     }
 
     return (
-        <div className={"LocationCard"} onClick={navigateToDetail}>
+        <div
+            className={"LocationCard"}
+            onClick={navigateToDetail}
+            onKeyDown={navigateToDetail}
+            tabIndex={0}
+            role="button"
+            aria-label={`Navigate to ${props.location.city}`}
+        >
             <div className={"LocationCity"}>{props.location.city}</div>
             <div className={"LocationVenue"}>{props.location.venue}</div>
             <div className={"LocationPin"}>{props.location.googlePlusCode}</div>
