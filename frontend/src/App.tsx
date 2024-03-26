@@ -28,7 +28,7 @@ export default function App() {
               <div className={"HeaderComponent"}>
                   <div className={"HeaderWrapper"}>
                       <Link to={"/"} className={"HeaderLink"}>
-                          <h1 className={"HeaderTitle"}>Bark Dates</h1>
+                          <img className={"HeaderLogo"} src="/public/BarkDateLogo.png" alt={"Barkdate Logo"}/>
                       </Link>
                   </div>
               </div>
