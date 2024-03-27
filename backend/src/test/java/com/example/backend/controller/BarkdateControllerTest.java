@@ -4,12 +4,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -26,5 +27,29 @@ class BarkdateControllerTest {
         mvc.perform(MockMvcRequestBuilders.get("/api/bark-dates"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
+    }
+
+    @Test
+    void addLocation_whenNewRestaurantIsAdded_thenReturnRestaurant() throws Exception {
+        //GIVEN
+        //WHEN&THEN
+        mvc.perform(post("/api/bark-dates")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                            {
+                                "city": "Munich",
+                                "venue": "Englischer Garten",
+                                "googlePlusCode": "123456"
+                            }
+                        """))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                            {
+                                "city": "Munich",
+                                "venue": "Englischer Garten",
+                                "googlePlusCode": "123456"
+                            }
+                        """))
+                .andExpect(jsonPath("$.LocationId").isNotEmpty());
     }
 }
