@@ -1,5 +1,15 @@
-body, :root {
-  margin: 0;
-  padding: 0;
+@font-face {
+    font-family: "Selawik";
+    src: url("../public/selawksb.ttf") format("truetype");
 }
 
+body, :root {
+  margin: 5px;
+  padding: 5px;
+}
+
+.HeaderLogo {
+    cursor: pointer;
+    height: 40px;
+    padding: 0 0 10px 0;
+}

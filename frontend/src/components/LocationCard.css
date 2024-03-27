@@ -1,0 +1,17 @@
+.LocationCard {
+    font-family: "Selawik", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background: #007057;
+    color: white;
+}
+
+.LocationCity .LocationVenue .LocationPin {
+    display: inline-block;
+    margin-right: 5px;
+}
