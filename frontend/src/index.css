@@ -13,3 +13,20 @@ body, :root {
     height: 40px;
     padding: 0 0 10px 0;
 }
+
+.HeaderComponent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.HeaderNavigation {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 380px;
+    padding: 16px;
+    gap: 16px;
+}

@@ -44,43 +44,46 @@ export default function NewLocation(props: Readonly<NewLocationProps>) {
     }
 
     return (
-        <div className={"location-form-wrapper"}>
-            <form onSubmit={handleSubmit}>
-                <label>Neuer Standort
-                    <input
-                        type="text"
-                        value={locationData.city}
-                        name="city"
-                        onChange={event =>
-                            setLocationData({...locationData, city: event.target.value})}
-                        maxLength={100}
-                        placeholder={"Stadt oder Ort"}
-                        required={true}
-                    />
-                    <input
-                        type="text"
-                        value={locationData.venue}
-                        name="venue"
-                        onChange={event =>
-                        setLocationData({...locationData, venue: event.target.value})}
-                        maxLength={100}
-                        placeholder={"Hundewiese oder Park"}
-                        required={true}
-                    />
-                    <input
-                        type="text"
-                        value={locationData.googlePlusCode}
-                        name="googlePlusCode"
-                        onChange={event =>
-                        setLocationData({...locationData, googlePlusCode: event.target.value})}
-                        maxLength={50}
-                        placeholder={"Google PlusCode oder Url"}
-                        required={true}
-                    />
-                </label>
-                <button className={"btn-submit"} type={"submit"}>Hinzufügen</button>
-            </form>
-            <button className={"btn-cancel"} onClick={handleCancel}>Abbrechen</button>
+        <div className={"location-content-wrapper"}>
+            <div className={"location-form-wrapper"}>
+                <form className={"location-form"} onSubmit={handleSubmit}>
+                    <label>
+                        <h3 className={"location-header"}>Neuer Standort </h3>
+                        <input
+                            type="text"
+                            value={locationData.city}
+                            name="city"
+                            onChange={event =>
+                                setLocationData({...locationData, city: event.target.value})}
+                            maxLength={100}
+                            placeholder={"Stadt oder Ort"}
+                            required={true}
+                        />
+                        <input
+                            type="text"
+                            value={locationData.venue}
+                            name="venue"
+                            onChange={event =>
+                                setLocationData({...locationData, venue: event.target.value})}
+                            maxLength={100}
+                            placeholder={"Hundewiese oder Park"}
+                            required={true}
+                        />
+                        <input
+                            type="text"
+                            value={locationData.googlePlusCode}
+                            name="googlePlusCode"
+                            onChange={event =>
+                                setLocationData({...locationData, googlePlusCode: event.target.value})}
+                            maxLength={50}
+                            placeholder={"Google PlusCode oder Url"}
+                            required={true}
+                        />
+                    </label>
+                    <button className={"btn-submit"} type={"submit"}>Hinzufügen</button>
+                </form>
+                <button className={"btn-cancel"} onClick={handleCancel}>Abbrechen</button>
+            </div>
         </div>
     );
 }
