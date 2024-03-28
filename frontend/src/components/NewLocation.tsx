@@ -2,6 +2,7 @@ import React, {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Location} from '../types/Location.ts'
 import axios from "axios";
+import "./NewLocation.css"
 
 type Input = {
     city: string,
@@ -34,7 +35,7 @@ export default function NewLocation(props: Readonly<NewLocationProps>) {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        alert(locationData.city + "wurde hinzugefügt!")
+        alert(locationData.city + " wurde hinzugefügt!")
         saveNewLocation();
     }
 
@@ -45,14 +46,16 @@ export default function NewLocation(props: Readonly<NewLocationProps>) {
     return (
         <div className={"location-form-wrapper"}>
             <form onSubmit={handleSubmit}>
-                <label>New Location
+                <label>Neuer Standort
                     <input
                         type="text"
                         value={locationData.city}
                         name="city"
                         onChange={event =>
                             setLocationData({...locationData, city: event.target.value})}
-                        required
+                        maxLength={100}
+                        placeholder={"Stadt oder Ort"}
+                        required={true}
                     />
                     <input
                         type="text"
@@ -60,7 +63,9 @@ export default function NewLocation(props: Readonly<NewLocationProps>) {
                         name="venue"
                         onChange={event =>
                         setLocationData({...locationData, venue: event.target.value})}
-                        required
+                        maxLength={100}
+                        placeholder={"Hundewiese oder Park"}
+                        required={true}
                     />
                     <input
                         type="text"
@@ -68,12 +73,14 @@ export default function NewLocation(props: Readonly<NewLocationProps>) {
                         name="googlePlusCode"
                         onChange={event =>
                         setLocationData({...locationData, googlePlusCode: event.target.value})}
-                        required
+                        maxLength={50}
+                        placeholder={"Google PlusCode oder Url"}
+                        required={true}
                     />
                 </label>
                 <button className={"btn-submit"} type={"submit"}>Hinzufügen</button>
             </form>
-            <button className={"btn-cancel"} onClick={handleCancel}>Cancel</button>
+            <button className={"btn-cancel"} onClick={handleCancel}>Abbrechen</button>
         </div>
     );
 }

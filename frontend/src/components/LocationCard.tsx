@@ -16,13 +16,7 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
     }
 
     return (
-        <div
-            className={"LocationCard"}
-            onClick={navigateToDetail}
-            onKeyDown={navigateToDetail}
-            role="button"
-            aria-label={`Navigate to ${props.location.city}`}
-        >
+        <div className={"LocationCard"} onClick={navigateToDetail}>
             <div className={"LocationCity"}>{props.location.city}</div>
             <div className={"LocationVenue"}>{props.location.venue}</div>
             <div className={"LocationPin"}>{props.location.googlePlusCode}</div>

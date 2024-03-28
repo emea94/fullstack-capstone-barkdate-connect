@@ -34,7 +34,7 @@ export default function App() {
                       </Link>
                   </div>
                   <div className={"HeaderNavigation"}>
-                      <Link to={"/newlocation"} className={"HeaderNavLink"}>Add Location
+                      <Link to={"/newlocation"} className={"HeaderNavLink"}>Neuen Standort hinzufügen
                       </Link>
                   </div>
               </div>
