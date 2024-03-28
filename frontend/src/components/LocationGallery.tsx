@@ -11,7 +11,7 @@ export default function LocationGallery(props: Readonly<LocationGalleryProps>) {
         <div className={"LocationGallery"}>
             <div>
                 {props.locations.map(location =>
-                    <LocationCard key={location.id} location={location}/>)}
+                    <LocationCard key={location.locationId} location={location}/>)}
             </div>
         </div>
     );

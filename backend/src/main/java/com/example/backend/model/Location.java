@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("locations")
 public record Location(
         @Id
-        String LocationId,
+        String locationId,
         String city,
         String venue,
         String googlePlusCode
