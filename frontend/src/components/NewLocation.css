@@ -56,7 +56,7 @@ input {
 }
 
 .btn-submit:hover {
-
+    background-color: #E01A36;
 }
 
 .btn-cancel {
@@ -72,7 +72,7 @@ input {
 }
 
 .btn-cancel:hover {
-    background-color: #FF204E;
+    background-color: #E01A36;
 }
 
 .location-header {
