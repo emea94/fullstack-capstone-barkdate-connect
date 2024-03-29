@@ -1,5 +1,5 @@
 export type Location = {
-    locationId: string,
+    id: string,
     city: string,
     venue: string,
     googlePlusCode: string,

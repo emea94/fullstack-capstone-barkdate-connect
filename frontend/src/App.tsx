@@ -34,7 +34,7 @@ export default function App() {
                       </Link>
                   </div>
                   <div className={"HeaderNavigation"}>
-                      <Link to={"/newlocation"} className={"HeaderNavLink"}>Neuen Standort hinzufügen
+                      <Link to={"/new-location"} className={"HeaderNavLink"}>Neuen Standort hinzufügen
                       </Link>
                   </div>
               </div>
@@ -46,7 +46,7 @@ export default function App() {
                       <LocationGallery locations={location} fetchLocations={fetchLocation}/>
                       :
                       <h1 className={"notfoundtag"}>No locations found</h1>}/>
-              <Route path={"/newlocation"} element={<NewLocation saveNewLocation={setLocation}/>}/>
+              <Route path={"/new-location"} element={<NewLocation saveNewLocation={setLocation}/>}/>
           </Routes>
       </>
   )
