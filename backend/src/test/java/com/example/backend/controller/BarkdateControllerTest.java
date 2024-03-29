@@ -50,6 +50,6 @@ class BarkdateControllerTest {
                                 "googlePlusCode": "123456"
                             }
                         """))
-                .andExpect(jsonPath("$.locationId").isNotEmpty());
+                .andExpect(jsonPath("$.id").isNotEmpty());
     }
 }
