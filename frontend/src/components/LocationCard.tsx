@@ -15,6 +15,7 @@ type Input = {
     googlePlusCode: string
 }
 
+
 export default function LocationCard(props: Readonly<LocationCardProps>) {
     const [isEditable, setIsEditable] = useState<boolean>(false);
     const [formData, setFormData] = useState<Input>({
@@ -25,6 +26,15 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
 
     function handleEdit() {
         setIsEditable(true)
+    }
+
+    function handleCancel() {
+        setFormData({
+            city: props.location.city,
+            venue: props.location.venue,
+            googlePlusCode: props.location.googlePlusCode
+        });
+        setIsEditable(false);
     }
 
     function updateLocation(locations: Location[], newLocation: Location) {
@@ -68,10 +78,7 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
                                 onChange={event => setFormData({...formData, googlePlusCode: event.target.value})}
                             />
                             <button onClick={handleEditSave}>Speichern</button>
-                            <button onClick={() => {
-                                setIsEditable(false);
-                            }}>Abbrechen
-                            </button>
+                            <button onClick={handleCancel}>Abbrechen</button>
                         </div>
                     )
                     :
