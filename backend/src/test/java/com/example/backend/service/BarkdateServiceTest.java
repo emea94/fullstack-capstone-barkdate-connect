@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -42,5 +43,23 @@ class BarkdateServiceTest {
         //THEN
         verify(repo).save(any(Location.class));
         assertEquals(locationToSave, actual);
+    }
+
+    @Test
+    void editLocationById_whenLocationIsCalled_thenReturnUpdatedDetailsForLocation() {
+        //GIVEN
+        LocationDto location = new LocationDto("Munich", "Englischer Garten", "123456");
+        Location locationToUpdate = new Location("1", "Munich", "Englischer Garten", "123456");
+
+        when(repo.findById("1")).thenReturn(Optional.of(locationToUpdate));
+        when(repo.save(locationToUpdate)).thenReturn(locationToUpdate);
+
+        //WHEN
+        Location actual = service.editLocationById("1", location);
+
+        //THEN
+        verify(repo).findById("1");
+        verify(repo).save(locationToUpdate);
+        assertEquals(locationToUpdate, actual);
     }
 }
