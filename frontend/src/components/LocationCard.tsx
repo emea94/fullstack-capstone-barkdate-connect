@@ -11,7 +11,7 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
 
     function navigateToDetail(event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>) {
         if (event.type === 'click' || (event.type === 'keydown' && (event as React.KeyboardEvent<HTMLDivElement>).key === 'Enter')) {
-            navigate("/locations/" + props.location.locationId);
+            navigate("/locations/" + props.location.id);
         }
     }
 
