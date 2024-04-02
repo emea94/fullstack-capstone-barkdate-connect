@@ -22,4 +22,12 @@ public class BarkdateService {
         Location locationToSave = new Location(null, location.city(), location.venue(), location.googlePlusCode());
         return locationRepo.save(locationToSave);
     }
+
+    public Location editLocationById(String id, LocationDto location) {
+        Location locationToUpdate = locationRepo.findById(id).orElseThrow();
+        return locationRepo.save(locationToUpdate
+                .withCity(location.city())
+                .withVenue(location.venue())
+                .withGooglePlusCode(location.googlePlusCode()));
+    }
 }

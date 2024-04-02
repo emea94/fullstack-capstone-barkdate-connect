@@ -24,4 +24,10 @@ public class BarkdateController {
     public Location addLocation(@RequestBody LocationDto location) {
         return service.addLocation(location);
     }
+
+    @PutMapping("/{id}")
+    public Location editLocationById(@PathVariable String id, @RequestBody LocationDto location) {
+        return service.editLocationById(id, location);
+    }
+
 }
