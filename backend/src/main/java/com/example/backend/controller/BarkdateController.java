@@ -1,11 +1,10 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.Location;
+import com.example.backend.model.LocationDto;
 import com.example.backend.service.BarkdateService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +18,10 @@ public class BarkdateController {
     @GetMapping
     public List<Location> getAllLocations() {
         return service.getAllLocations();
+    }
+
+    @PostMapping
+    public Location addLocation(@RequestBody LocationDto location) {
+        return service.addLocation(location);
     }
 }
