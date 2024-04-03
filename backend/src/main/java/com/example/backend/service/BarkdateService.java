@@ -30,4 +30,9 @@ public class BarkdateService {
                 .withVenue(location.venue())
                 .withGooglePlusCode(location.googlePlusCode()));
     }
+
+    public void deleteLocationById(String id) {
+        Location location = locationRepo.findById(id).orElseThrow();
+        locationRepo.delete(location);
+    }
 }

@@ -7,9 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 class BarkdateServiceTest {
@@ -61,5 +63,30 @@ class BarkdateServiceTest {
         verify(repo).findById("1");
         verify(repo).save(locationToUpdate);
         assertEquals(locationToUpdate, actual);
+    }
+
+    @Test
+    void deleteLocationById_whenCalledWithValidId_thenDeleteLocation() {
+        //GIVEN
+        String id = "1";
+        Location location = new Location(id, "Munich", "Englischer Garten", "123456");
+        when(repo.findById("1")).thenReturn(Optional.of(location));
+
+        //WHEN
+        service.deleteLocationById(id);
+
+        //THEN
+        verify(repo).findById(id);
+        verify(repo).delete(location);
+    }
+
+    @Test
+    void deleteLocationById_whenCalledWithInvalidId_thenThrowNoSuchElementException() {
+        //GIVEN
+        String id = "1";
+        when(repo.findById(id)).thenReturn(Optional.empty());
+
+        //WHEN & THEN
+        assertThrows(NoSuchElementException.class, () -> service.deleteLocationById(id));
     }
 }

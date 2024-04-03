@@ -56,6 +56,15 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
             .catch((error) => console.log(error.message))
     }
 
+    function deleteLocation() {
+        if (window.confirm("Bist du dir sicher, dass die Location gelöscht werden soll?"))
+            axios.delete("/api/bark-dates/" + props.location.id)
+                .then(() => {
+                    props.saveNewLocation(props.locations.filter((location) => location.id !== props.location.id))
+                })
+                .catch((error) => console.log(error.message))
+    }
+
     return (
         <div className={"LocationCard"}>
             <div className={isEditable ? "LocationDetailEdit" : "LocationDetail"}>
@@ -77,8 +86,10 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
                                 value={formData.googlePlusCode}
                                 onChange={event => setFormData({...formData, googlePlusCode: event.target.value})}
                             />
-                            <button onClick={handleEditSave}>Speichern</button>
-                            <button onClick={handleCancel}>Abbrechen</button>
+                            <div className={"location-edit-button"}>
+                                <button onClick={handleEditSave}>Speichern</button>
+                                <button onClick={handleCancel}>Abbrechen</button>
+                            </div>
                         </div>
                     )
                     :
@@ -88,8 +99,9 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
                             <div className={"LocationVenue"}>{props.location.venue}</div>
                             <div className={"LocationPin"}>{props.location.googlePlusCode}</div>
                             {!isEditable &&
-                                <div>
+                                <div className={"location-button"}>
                                     <button onClick={handleEdit}>Bearbeiten</button>
+                                    <button onClick={deleteLocation}>Löschen</button>
                                 </div>
                             }
                         </div>

@@ -10,7 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -81,5 +83,29 @@ class BarkdateControllerTest {
                                 "googlePlusCode": "123456"
                             }
                         """));
+    }
+
+    @Test
+    void deleteLocationById_whenCalledWithValidId_thenStatusIsOk() throws Exception {
+        //GIVEN
+        String id = "1";
+        Location location = new Location(id, "Munich", "Englischer Garten", "123456");
+        repo.save(location);
+
+        //WHEN&THEN
+        mvc.perform(MockMvcRequestBuilders.delete("/api/bark-dates/" + id))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        assertFalse(repo.findById(id).isPresent());
+    }
+
+    @Test
+    void deleteLocationById_whenCalledWithInvalidId_thenThrowException() throws Exception {
+        //GIVEN
+        String invalidId = "123";
+
+        //WHEN&THEN
+        mvc.perform(MockMvcRequestBuilders.delete("/api/bark-dates/" + invalidId))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 }
