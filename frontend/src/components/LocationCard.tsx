@@ -9,7 +9,7 @@ type LocationCardProps = {
     locations: Location[]
 }
 
-type Input = {
+type LocationInput = {
     city: string,
     venue: string,
     googlePlusCode: string
@@ -18,7 +18,7 @@ type Input = {
 
 export default function LocationCard(props: Readonly<LocationCardProps>) {
     const [isEditable, setIsEditable] = useState<boolean>(false);
-    const [formData, setFormData] = useState<Input>({
+    const [formData, setFormData] = useState<LocationInput>({
         city: props.location.city,
         venue: props.location.venue,
         googlePlusCode: props.location.googlePlusCode
