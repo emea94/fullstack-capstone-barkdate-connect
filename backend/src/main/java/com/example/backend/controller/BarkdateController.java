@@ -4,9 +4,11 @@ import com.example.backend.model.Location;
 import com.example.backend.model.LocationDto;
 import com.example.backend.service.BarkdateService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/bark-dates")
@@ -28,6 +30,17 @@ public class BarkdateController {
     @PutMapping("/{id}")
     public Location editLocationById(@PathVariable String id, @RequestBody LocationDto location) {
         return service.editLocationById(id, location);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteLocationById(@PathVariable String id) {
+        service.deleteLocationById(id);
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleNoSuchElementException(NoSuchElementException e) {
+        return e.getMessage();
     }
 
 }
