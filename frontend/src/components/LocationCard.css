@@ -1,17 +1,37 @@
-.LocationCard {
+.card-body {
     font-family: "Selawik", sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    margin-bottom: 20px;
     background: #007057;
+    color: white;
+    border-radius: 5px;
+}
+
+.location-wrapper {
     color: white;
 }
 
-.LocationCity .LocationVenue .LocationPin {
-    display: inline-block;
-    margin-right: 5px;
+.location-edit-wrapper {
+    color: white;
+    margin-bottom: 10px;
+}
+
+#formCity.form-control {
+    margin-bottom: 20px;
+}
+
+#formVenue.form-control {
+    margin-bottom: 20px;
+}
+
+#formGooglePlusCode.form-control {
+    margin-bottom: 20px;
+}
+
+.custom-card-group {
+    width: 100%;
+    height 400px;
+}
+
+.location-card-img {
+    height: 150px;
+    object-fit: cover;
 }
