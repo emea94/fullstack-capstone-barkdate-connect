@@ -22,8 +22,8 @@ export default function LocationGallery(props: Readonly<LocationGalleryProps>) {
     return (
         <Container fluid>
             <Row xs={1} md={2} lg={3} className="g-4">
-                {locations.map((location, index) => (
-                    <Col key={index}>
+                {locations.map((location) => (
+                    <Col key={location.id}>
                         <LocationCard
                             location={location}
                             locations={locations}
