@@ -8,22 +8,21 @@ body, :root {
   padding: 5px;
 }
 
-.HeaderLogo {
+.header-logo {
     cursor: pointer;
-    height: 40px;
-    padding: 0 0 10px 0;
+    height: 50px;
+    padding: 10px 0 10px 24px;
 }
 
-.HeaderNavLink {
+.header-nav-link {
     color: #333;
     text-decoration: none;
     margin-right: 15px;
     text-align: right;
     display: block;
-    padding: .5rem 1rem;
 }
 
-.HeaderNavLink:hover {
+.header-nav-link:hover {
     color: #007057;
 }
 

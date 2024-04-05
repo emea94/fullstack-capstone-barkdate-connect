@@ -27,15 +27,15 @@ export default function App() {
 
     return (
         <>
-            <Navbar bg="light" expand="lg">
+            <Navbar expand="lg">
                 <Navbar.Brand>
-                    <Link to={"/"} className={"HeaderLink"}>
-                        <img className={"HeaderLogo"} src={Logo} alt={"Barkdate Logo"} />
+                    <Link to={"/"} className={"header-link"}>
+                        <img className={"header-logo"} src={Logo} alt={"Barkdate Logo"} />
                     </Link>
                 </Navbar.Brand>
                 <Nav className="ml-auto">
-                    <Link to={"/"} className={"HeaderNavLink"}>Home</Link>
-                    <Link to={"/new-location"} className={"HeaderNavLink"}>Standort hinzufügen</Link>
+                    <Link to={"/"} className={"header-nav-link"}>Home</Link>
+                    <Link to={"/new-location"} className={"header-nav-link"}>Standort hinzufügen</Link>
                 </Nav>
             </Navbar>
 

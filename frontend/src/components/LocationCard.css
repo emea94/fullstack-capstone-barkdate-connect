@@ -2,7 +2,7 @@
     font-family: "Selawik", sans-serif;
     background: #007057;
     color: white;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;;
 }
 
 .location-wrapper {
