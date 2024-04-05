@@ -14,19 +14,16 @@ body, :root {
     padding: 0 0 10px 0;
 }
 
-.HeaderComponent {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 16px;
+.HeaderNavLink {
+    color: #333;
+    text-decoration: none;
+    margin-right: 15px;
+    text-align: right;
+    display: block;
+    padding: .5rem 1rem;
 }
 
-.HeaderNavigation {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 380px;
-    padding: 16px;
-    gap: 16px;
+.HeaderNavLink:hover {
+    color: #007057;
 }
+
