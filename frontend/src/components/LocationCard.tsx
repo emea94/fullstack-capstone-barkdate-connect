@@ -2,6 +2,7 @@ import {Location} from '../types/Location.ts'
 import "./LocationCard.css"
 import axios from "axios";
 import {useState} from "react";
+import LocationImg from "../assets/BarkDate-Location.jpg"
 import {Button, ButtonGroup, Card, CardGroup, Container, Form} from "react-bootstrap";
 
 type LocationCardProps = {
@@ -70,7 +71,7 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
         <Container className={"LocationCard"} fluid={"sm"}>
             <CardGroup>
                 <Card>
-                    <Card.Img className="location-card-img" variant="top" src="src/assets/BarkDate-Location.jpg"/>
+                    <Card.Img className="location-card-img" variant="top" src={LocationImg}/>
                     <Card.Body>
                         {isEditable
                             ? (
