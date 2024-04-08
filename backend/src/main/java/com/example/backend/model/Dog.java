@@ -1,9 +1,7 @@
 package com.example.backend.model;
 
-import lombok.With;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@With
 @Document("dogs")
 public record Dog (
         String id,
