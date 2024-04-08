@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.DogDto;
 import com.example.backend.model.Location;
 import com.example.backend.repository.LocationRepository;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -107,5 +111,14 @@ class BarkdateControllerTest {
         //WHEN&THEN
         mvc.perform(MockMvcRequestBuilders.delete("/api/bark-dates/" + invalidId))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    void getDogsByLocation_whenCalledWithLocation_thenReturnDogs() throws Exception {
+        //GIVEN
+        // WHEN&THEN
+        mvc.perform(MockMvcRequestBuilders.get("/api/bark-dates/Frankfurt"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("[]"));
     }
 }
