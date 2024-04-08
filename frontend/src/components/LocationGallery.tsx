@@ -1,6 +1,7 @@
 import LocationCard from "./LocationCard.tsx";
 import {Location} from '../types/Location.ts'
 import {useEffect, useState} from "react";
+import {Col, Container, Row} from "react-bootstrap";
 
 type LocationGalleryProps = {
     locations: Location[],
@@ -19,17 +20,18 @@ export default function LocationGallery(props: Readonly<LocationGalleryProps>) {
     }, [props.locations]);
 
     return (
-        <div className={"LocationGallery"}>
-            <div>
-                {locations.map(location =>
-                    <LocationCard
-                        key={location.id}
-                        location={location}
-                        locations={locations}
-                        saveNewLocation={saveNewLocation}
-                    />
-                )}
-            </div>
-        </div>
+        <Container fluid>
+            <Row xs={1} md={2} lg={3} className="g-4">
+                {locations.map((location) => (
+                    <Col key={location.id}>
+                        <LocationCard
+                            location={location}
+                            locations={locations}
+                            saveNewLocation={saveNewLocation}
+                        />
+                    </Col>
+                ))}
+            </Row>
+        </Container>
     );
 }
