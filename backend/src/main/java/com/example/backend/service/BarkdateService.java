@@ -39,8 +39,11 @@ public class BarkdateService {
         locationRepo.delete(location);
     }
 
-    public List<DogDto> getDogsByLocation(String location) {
-        return dogRepo.findByLocation(location).stream()
+
+    //schreibe eine methode, in der anhand der location id alle hunde angezeigt werde, deren attribut location mit der city aus location übereinstimmt
+    public List<DogDto> getDogsByLocation(String id) {
+        Location location = locationRepo.findById(id).orElseThrow();
+        return dogRepo.findByLocation(location.city()).stream()
                 .map(dog -> new DogDto(
                         dog.location(),
                         dog.imageUrl(),

@@ -38,9 +38,9 @@ public class BarkdateController {
         service.deleteLocationById(id);
     }
 
-    @GetMapping("/{location}")
-    public List<DogDto> getDogsByLocation(@PathVariable String location) {
-        return service.getDogsByLocation(location);
+    @GetMapping("/{id}")
+    public List<DogDto> getDogsByLocation(@PathVariable String id) {
+        return service.getDogsByLocation(id);
     }
 
     @ExceptionHandler(NoSuchElementException.class)

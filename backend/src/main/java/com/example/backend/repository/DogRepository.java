@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DogRepository extends MongoRepository<Dog, String>{
-    List<Dog> findByLocation(String location);
+public interface DogRepository extends MongoRepository<Dog, String> {
+    List<Dog> findByLocation(String city);
 }
