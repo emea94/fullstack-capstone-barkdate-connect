@@ -4,6 +4,7 @@ import axios from "axios";
 import {useState} from "react";
 import LocationImg from "../assets/BarkDate-Location.jpg"
 import {Button, ButtonGroup, Card, CardGroup, Container, Form} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
 type LocationCardProps = {
     saveNewLocation: (updatedLocations: Location[]) => void,
@@ -20,14 +21,20 @@ type LocationInput = {
 
 export default function LocationCard(props: Readonly<LocationCardProps>) {
     const [isEditable, setIsEditable] = useState<boolean>(false);
+
     const [formData, setFormData] = useState<LocationInput>({
         city: props.location.city,
         venue: props.location.venue,
         googlePlusCode: props.location.googlePlusCode
     });
+    const navigate = useNavigate();
 
     function handleEdit() {
         setIsEditable(true)
+    }
+
+    function navigateToDetail() {
+        navigate("/dogs/" + props.location.id)
     }
 
     function handleCancel() {
@@ -129,6 +136,7 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
                                         <div className={"location-button"}>
                                             <ButtonGroup>
                                                 <Button variant="warning" onClick={handleEdit}>Bearbeiten</Button>
+                                                <Button variant="warning" onClick={navigateToDetail}>Zu den Hunden</Button>
                                                 <Button variant="danger" onClick={deleteLocation}>Löschen</Button>
                                             </ButtonGroup>
                                         </div>
