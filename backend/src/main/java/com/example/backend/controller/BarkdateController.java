@@ -38,7 +38,7 @@ public class BarkdateController {
         service.deleteLocationById(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/dogs/{id}")
     public List<DogDto> getDogsByLocation(@PathVariable String id) {
         return service.getDogsByLocation(id);
     }
