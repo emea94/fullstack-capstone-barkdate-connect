@@ -1,6 +1,5 @@
 package com.example.backend.controller;
 
-import com.example.backend.model.DogDto;
 import com.example.backend.model.Location;
 import com.example.backend.repository.LocationRepository;
 import org.junit.jupiter.api.Test;
@@ -13,10 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -116,8 +113,11 @@ class BarkdateControllerTest {
     @Test
     void getDogsByLocation_whenCalledWithLocation_thenReturnDogs() throws Exception {
         //GIVEN
+        String id = "1";
+        Location location = new Location(id, "Munich", "Englischer Garten", "123456");
+        repo.save(location);
         // WHEN&THEN
-        mvc.perform(MockMvcRequestBuilders.get("/api/bark-dates/Frankfurt"))
+        mvc.perform(MockMvcRequestBuilders.get("/api/bark-dates/dogs/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json("[]"));
     }

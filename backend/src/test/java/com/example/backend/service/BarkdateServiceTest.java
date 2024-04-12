@@ -1,7 +1,6 @@
 package com.example.backend.service;
 
 import com.example.backend.model.Dog;
-import com.example.backend.model.DogDto;
 import com.example.backend.model.Location;
 import com.example.backend.model.LocationDto;
 import com.example.backend.repository.DogRepository;
@@ -101,17 +100,17 @@ class BarkdateServiceTest {
                 new Dog("1", "Munich", "https://dog1.com", "Bello", "25.03.2024", "3 Jahre", 40, 10, "https://dog1.com", "Dog Rescue"),
                 new Dog("2", "Munich", "https://dog2.com", "Rex", "25.03.2024", "3 Jahre", 60, 20, "https://dog2.com", "Dog Rescue")
         );
-        List<DogDto> expected = List.of(
-                new DogDto("Munich", "https://dog1.com", "Bello", "25.03.2024", "3 Jahre", 40, 10, "https://dog1.com", "Dog Rescue"),
-                new DogDto("Munich", "https://dog2.com", "Rex", "25.03.2024", "3 Jahre", 60, 20, "https://dog2.com", "Dog Rescue")
-        );
+        when(repo.findById("1")).thenReturn(Optional.of(new Location("1", "Munich", "Englischer Garten", "123456")));
+
         when(dogRepo.findByLocation("Munich")).thenReturn(dogs);
 
         //WHEN
-        List<DogDto> actual = service.getDogsByLocation("Munich");
+        List<Dog> actual = service.getDogsByLocation("1");
 
         //THEN
+        verify(repo).findById("1");
         verify(dogRepo).findByLocation("Munich");
-        assertEquals(expected, actual);
+        assertEquals(dogs, actual);
     }
+
 }

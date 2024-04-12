@@ -1,6 +1,6 @@
 package com.example.backend.service;
 
-import com.example.backend.model.DogDto;
+import com.example.backend.model.Dog;
 import com.example.backend.model.Location;
 import com.example.backend.model.LocationDto;
 import com.example.backend.repository.DogRepository;
@@ -40,21 +40,8 @@ public class BarkdateService {
     }
 
 
-    //schreibe eine methode, in der anhand der location id alle hunde angezeigt werde, deren attribut location mit der city aus location übereinstimmt
-    public List<DogDto> getDogsByLocation(String id) {
-        Location location = locationRepo.findById(id).orElseThrow();
-        return dogRepo.findByLocation(location.city()).stream()
-                .map(dog -> new DogDto(
-                        dog.location(),
-                        dog.imageUrl(),
-                        dog.name(),
-                        dog.participationBarkdate(),
-                        dog.age(),
-                        dog.size(),
-                        dog.weight(),
-                        dog.dogLink(),
-                        dog.organizationName()
-                ))
-                .toList();
+    public List<Dog> getDogsByLocation(String locationId) {
+        Location location = locationRepo.findById(locationId).orElseThrow();
+        return dogRepo.findByLocation(location.city());
     }
 }
