@@ -27,3 +27,9 @@ body, :root {
     color: #007057;
 }
 
+.card-body {
+    font-family: "Selawik", sans-serif;
+    background: #007057;
+    color: white;
+    border-radius: 0 0 5px 5px;
+}

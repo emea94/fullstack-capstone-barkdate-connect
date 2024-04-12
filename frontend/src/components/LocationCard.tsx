@@ -77,7 +77,7 @@ export default function LocationCard(props: Readonly<LocationCardProps>) {
     return (
         <Container className={"LocationCard"} fluid={"sm"}>
             <CardGroup>
-                <Card>
+                <Card className="location-card">
                     <Card.Img className="location-card-img" variant="top" src={LocationImg}/>
                     <Card.Body>
                         {isEditable

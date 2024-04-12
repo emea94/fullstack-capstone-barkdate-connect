@@ -13,7 +13,6 @@ export default function DogGallery() {
 
 
     function fetchDog() {
-        console.log(id)
         axios.get("/api/bark-dates/dogs/" + id)
             .then((response) => {
                 console.log(response)
