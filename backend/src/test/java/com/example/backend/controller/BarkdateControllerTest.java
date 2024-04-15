@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -107,5 +108,17 @@ class BarkdateControllerTest {
         //WHEN&THEN
         mvc.perform(MockMvcRequestBuilders.delete("/api/bark-dates/" + invalidId))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    void getDogsByLocation_whenCalledWithLocation_thenReturnDogs() throws Exception {
+        //GIVEN
+        String id = "1";
+        Location location = new Location(id, "Munich", "Englischer Garten", "123456");
+        repo.save(location);
+        // WHEN&THEN
+        mvc.perform(MockMvcRequestBuilders.get("/api/bark-dates/dogs/1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().json("[]"));
     }
 }

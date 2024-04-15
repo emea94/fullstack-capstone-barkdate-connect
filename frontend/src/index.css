@@ -10,14 +10,15 @@ body, :root {
 
 .header-logo {
     cursor: pointer;
-    height: 50px;
-    padding: 10px 0 10px 24px;
+    height: 45px;
+    padding: 10px 0 10px 20px;
 }
 
 .header-nav-link {
     color: #333;
+    font: 14px "Selawik", sans-serif;
     text-decoration: none;
-    margin-right: 15px;
+    padding-right: 20px;
     text-align: right;
     display: block;
 }
@@ -26,3 +27,9 @@ body, :root {
     color: #007057;
 }
 
+.card-body {
+    font-family: "Selawik", sans-serif;
+    background: #007057;
+    color: white;
+    border-radius: 0 0 5px 5px;
+}

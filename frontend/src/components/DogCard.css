@@ -1,0 +1,22 @@
+.dog-card-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-link {
+    color: white;
+    text-decoration: none;
+}
+
+.card-text {
+    margin: 0;
+    color: white;
+}
+
+.card-title {
+    color: white;
+}
+
+.HomeButton {
+    margin-top: 20px;
+}

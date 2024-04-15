@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.model.Dog;
 import com.example.backend.model.Location;
 import com.example.backend.model.LocationDto;
 import com.example.backend.service.BarkdateService;
@@ -35,6 +36,11 @@ public class BarkdateController {
     @DeleteMapping("/{id}")
     public void deleteLocationById(@PathVariable String id) {
         service.deleteLocationById(id);
+    }
+
+    @GetMapping("/dogs/{id}")
+    public List<Dog> getDogsByLocation(@PathVariable String id) {
+        return service.getDogsByLocation(id);
     }
 
     @ExceptionHandler(NoSuchElementException.class)

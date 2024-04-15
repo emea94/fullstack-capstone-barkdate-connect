@@ -1,7 +1,9 @@
 package com.example.backend.service;
 
+import com.example.backend.model.Dog;
 import com.example.backend.model.Location;
 import com.example.backend.model.LocationDto;
+import com.example.backend.repository.DogRepository;
 import com.example.backend.repository.LocationRepository;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,8 @@ import static org.mockito.Mockito.*;
 class BarkdateServiceTest {
 
     private final LocationRepository repo = mock(LocationRepository.class);
-    private final BarkdateService service = new BarkdateService(repo);
+    private final DogRepository dogRepo = mock(DogRepository.class);
+    private final BarkdateService service = new BarkdateService(repo, dogRepo);
 
     @Test
     void getAllLocations_whenCalledInitially_thenReturnEmptyList() {
@@ -89,4 +92,25 @@ class BarkdateServiceTest {
         //WHEN & THEN
         assertThrows(NoSuchElementException.class, () -> service.deleteLocationById(id));
     }
+
+    @Test
+    void getDogsByLocation_whenCalledWithLocation_thenReturnListOfDogs() {
+        //GIVEN
+        List<Dog> dogs = List.of(
+                new Dog("1", "Munich", "https://dog1.com", "Bello", "25.03.2024", "3 Jahre", 40, 10, "https://dog1.com", "Dog Rescue"),
+                new Dog("2", "Munich", "https://dog2.com", "Rex", "25.03.2024", "3 Jahre", 60, 20, "https://dog2.com", "Dog Rescue")
+        );
+        when(repo.findById("1")).thenReturn(Optional.of(new Location("1", "Munich", "Englischer Garten", "123456")));
+
+        when(dogRepo.findByLocation("Munich")).thenReturn(dogs);
+
+        //WHEN
+        List<Dog> actual = service.getDogsByLocation("1");
+
+        //THEN
+        verify(repo).findById("1");
+        verify(dogRepo).findByLocation("Munich");
+        assertEquals(dogs, actual);
+    }
+
 }
